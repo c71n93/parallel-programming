@@ -17,6 +17,7 @@ void sentLongMsg(int my_rank, long int msg_size) {
     char* msg = (char*)malloc(msg_size);
     MPI_Recv(msg, msg_size, MPI_BYTE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     printf("%d: msg received; msg_size = %ld\n\n", my_rank, msg_size);
+    free(msg);
   }
   free(long_msg);
 }
@@ -34,6 +35,7 @@ void ssentLongMsg(int my_rank, long int msg_size) {
     char* msg = (char*)malloc(msg_size);
     MPI_Recv(msg, msg_size, MPI_BYTE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     printf("%d: msg S received; msg_size = %ld\n\n", my_rank, msg_size);
+    free(msg);
   }
   free(long_msg);
 }
@@ -51,6 +53,7 @@ void rsentLongMsg(int my_rank, long int msg_size) {
     char* msg = (char*)malloc(msg_size);
     MPI_Recv(msg, msg_size, MPI_BYTE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     printf("%d: msg R received; msg_size = %ld\n\n", my_rank, msg_size);
+    free(msg);
   }
   free(long_msg);
 }
@@ -68,6 +71,7 @@ void bsentLongMsg(int my_rank, long int msg_size) {
     char* msg = (char*)malloc(msg_size);
     MPI_Recv(msg, msg_size, MPI_BYTE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     printf("%d: msg B received; msg_size = %ld\n\n", my_rank, msg_size);
+    free(msg);
   }
   free(long_msg);
 }

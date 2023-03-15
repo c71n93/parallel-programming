@@ -16,12 +16,12 @@ int main(int argc, char *argv[]) {
 
   if(my_rank == 0) {
     double partial_sum;
-    double sum = 0;
+    double result = 0;
     for (int i = 1; i < comm_size; i++){
         MPI_Recv(&partial_sum, 1, MPI_DOUBLE, i, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        sum += partial_sum;
+        result += partial_sum;
     }
-    std::cout << "sum = " << sum << std::endl;
+    std::cout << "result = " << result << std::endl;
   } else {
     int n_of_counting_processes = comm_size - 1;
     double partial_sum = 0;

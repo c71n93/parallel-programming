@@ -1,3 +1,4 @@
 *.out
 /books
 .vscode
+.DS_Store

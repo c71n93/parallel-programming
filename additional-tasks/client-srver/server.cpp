@@ -6,6 +6,7 @@ int main(int argc, char *argv[]) {
 
   int size
   MPI_Comm_size(MPI_COMM_WORLD, &size);
+  if ()
   
   // printf("argv[1] = %s\n", argv[1]);
   // Open port.

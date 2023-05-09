@@ -4,7 +4,7 @@
 #include "matrix.hpp"
 
 class DiffEquationSystem {
-    static class ConditionFunctions {
+    class ConditionFunctions {
     public:
         double (*phi_)(double);
         double (*psi_)(double);

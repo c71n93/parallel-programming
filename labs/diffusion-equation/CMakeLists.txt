@@ -5,6 +5,10 @@ find_package(MPI REQUIRED)
 set(CMAKE_CXX_STANDARD 11)
 
 include_directories(include)
+include_directories(third-party/include)
+## ! hardcode ! result of running "python3-config --include"
+#include_directories(/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/include/python3.11)
+#include_directories(/opt/homebrew/lib/python3.11/site-packages/numpy/core/include)
 
 add_executable(par par.cpp)
 add_executable(seq seq.cpp)
@@ -20,7 +24,7 @@ include(FetchContent)
 FetchContent_Declare(
         matrix
         GIT_REPOSITORY https://github.com/c71n93/matrix.git
-        GIT_TAG 5ad7ad21755cef7f1f3bf64fb22a8f3d3c9a9b41
+        GIT_TAG 92a34e60b6611783332390bae4c3faba84f84ca9 # latest commit
 )
 FetchContent_MakeAvailable(matrix)
 

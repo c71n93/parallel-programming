@@ -1,4 +1,7 @@
 *.out
 /books
+cmake-build-debug/
+.idea/
+build/
 .vscode
 .DS_Store

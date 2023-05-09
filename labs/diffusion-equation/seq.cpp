@@ -1,17 +1,17 @@
 #include <iostream>
 #include <exception>
 #include "matrix.hpp"
-#include "diff-scheme.h"
+#include "diff-equation.h"
 
-static inline double phi(double x) {
+double phi(double x) {
     return std::cos(M_PI * x);
 }
 
-static inline double psi(double t) {
+double psi(double t) {
     return std::exp(-t);
 }
 
-static inline double f(double t, double x) {
+double f(double t, double x) {
     return x + t;
 }
 
@@ -24,8 +24,8 @@ int main(int argc, char **argv) {
     const double T = 1.0;
     const double X = 1.0;
     const double alpha = 2.0;
-    DiffScheme scheme(phi, psi, f, T, X, tLen, xLen, alpha);
-    Matrix<double> matrix = scheme.SolveSystemRectScheme();
+    DiffEquationSystem equationSystem(phi, psi, f, T, X, alpha);
+    Matrix<double> matrix = equationSystem.SolveSystemRectScheme(tLen, xLen);
     matrix.Dump();
     return 0;
 }

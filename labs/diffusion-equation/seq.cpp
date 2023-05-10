@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "matrix.hpp"
-#include "diff-equation.h"
+#include "diff-equation.hpp"
 
 #if 0
 #include "matplotlibcpp.h"
@@ -10,13 +10,13 @@ namespace plt = matplotlibcpp;
 #endif
 
 double phi(double x) {
-    return std::cos(M_PI * x);
+    return exp(-x);
 }
 double psi(double t) {
-    return std::exp(-t);
+    return exp(t);
 }
-double f(double t, double x) {
-    return x + t;
+double f(double  x, double t) {
+    return x * t;
 }
 
 inline std::pair<std::vector<std::vector<double>>, std::vector<std::vector<double>>> meshgrid(const std::vector<double>& tVec,
@@ -68,10 +68,9 @@ int main(int argc, char **argv) {
     const int xLen = static_cast<int>(std::strtol(argv[1], nullptr, 10));
     const double T = 1.0;
     const double X = 1.0;
-    const double alpha = 2.0;
+    const double alpha = 0.5;
     DiffEquationSystem equationSystem(phi, psi, f, T, X, alpha);
     Matrix<double> matrix = equationSystem.SolveSystemRectScheme(tLen, xLen);
-    matrix.Dump();
 #if 0
     makePlot(matrix, T, X, tLen, xLen);
 #endif

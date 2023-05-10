@@ -1,5 +1,5 @@
-#ifndef DIFFUSION_EQUATION_DIFF_EQUATION_H
-#define DIFFUSION_EQUATION_DIFF_EQUATION_H
+#ifndef DIFFUSION_EQUATION_DIFF_EQUATION_HPP
+#define DIFFUSION_EQUATION_DIFF_EQUATION_HPP
 
 #include "matrix.hpp"
 
@@ -28,7 +28,7 @@ public:
         double h = X_ / (xLen - 1);
         double tau = T_ / (tLen - 1);
         double beta = tau / h;
-        InitMatrix(matrix, tLen, xLen, tau, h);
+        InitConditions(matrix, tLen, xLen, tau, h);
         for (int t = 0; t < tLen; ++t) {
             for (int x = 0; x < xLen; ++x) {
                 ComputePoint(matrix, t, x, tau, h, beta);
@@ -41,7 +41,7 @@ public:
         double h = X_ / (xLen - 1);
         double tau = T_ / (tLen - 1);
         double beta = tau / h;
-        InitMatrix(matrix, tLen, xLen, tau, h);
+        InitConditions(matrix, tLen, xLen, tau, h);
         for (int t = 0; t < tLen; ++t) {
             for (int x = 0; x < xLen; ++x) {
                 ComputePoint(matrix, t, x, tau, h, beta);
@@ -51,7 +51,7 @@ public:
     }
 
 private:
-    void InitMatrix(Matrix<double>& matrix, int tLen, int xLen, double tau, double h) const {
+    void InitConditions(Matrix<double>& matrix, int tLen, int xLen, double tau, double h) const {
         for (int i = 0; i < tLen; ++i) {
             matrix[i][0] = condFuncs_.psi_(tau * i);
         }
@@ -70,4 +70,4 @@ private:
     }
 };
 
-#endif //DIFFUSION_EQUATION_DIFF_EQUATION_H
+#endif //DIFFUSION_EQUATION_DIFF_EQUATION_HPP

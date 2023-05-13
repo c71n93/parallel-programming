@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 
     std::vector<std::thread> thVec(nTreads);
     for (size_t i = 0; i < nTreads; i++) {
-        thVec[i] = std::thread(threadHello, nTreads, i);
+        thVec[i] = std::thread(threadHello, nTreads, i + 1);
     }
     for (auto& t: thVec) {
         t.join();
